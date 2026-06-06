@@ -1,10 +1,18 @@
-# Veterinary Behaviorist Agent
+<h1 align="center">Veterinary Behaviorist Agent</h1>
 
-[English](README.md) | [中文](README.zh-CN.md)
+<p align="center">
+  Evidence-based cat behavior consults for Claude Code, Codex, and local-first AI agents.
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
-[![Local-first](https://img.shields.io/badge/Mode-local--first-lightgrey.svg)](#host-agent-mode)
+<p align="center">
+  <a href="README.md">English</a> · <a href="README.zh-CN.md">中文</a>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="License: CC BY-NC-ND 4.0" src="https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg"></a>
+  <a href="https://www.python.org/downloads/"><img alt="Python 3.11+" src="https://img.shields.io/badge/Python-3.11%2B-blue.svg"></a>
+  <a href="#host-agent-mode"><img alt="Local-first mode" src="https://img.shields.io/badge/Mode-local--first-lightgrey.svg"></a>
+</p>
 
 Evidence-based veterinary behavior agent for cats and companion animals. It is designed for Claude Code, Codex, and other host agents that can read a skill file and run local commands.
 
@@ -19,10 +27,6 @@ The default mode uses the host agent itself as the reasoning model. You do not n
 - Requires citations from retrieved evidence. No fabricated PMID, DOI, or author-year citations.
 - Supports optional Zotero MCP for local reference libraries, notes, annotations, and PDFs.
 - Supports optional PaperQA2 mode when the user already has an OpenAI-compatible LLM API.
-
-## Keywords
-
-`veterinary-behavior`, `cat-behavior`, `animal-behavior`, `ai-agent`, `claude-code`, `codex`, `zotero`, `paperqa`, `pubmed`, `evidence-based`, `rag`, `local-first`, `veterinary-medicine`, `cats`
 
 ## Architecture
 
@@ -355,4 +359,8 @@ This project is for educational and decision-support use. Behavior changes can b
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+Licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](LICENSE).
+
+You may share unmodified copies for non-commercial purposes with attribution. Commercial use and distribution of modified versions require separate permission.
+
+Because this license includes NonCommercial and NoDerivatives restrictions, this is a public-source project, not an OSI open-source project.

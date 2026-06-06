@@ -2,6 +2,8 @@
 
 Thank you for improving Veterinary Behaviorist Agent. This project is a local-first agent workflow for evidence-based veterinary behavior support. Contributions should keep the project safe, citation-grounded, and easy to run in host-agent environments such as Claude Code and Codex.
 
+This repository is public-source under CC BY-NC-ND 4.0. By opening a pull request, you confirm that you own or have permission to submit the contribution, and you grant the maintainers permission to review, adapt, merge, and publish your contribution in this repository under the project license.
+
 ## Good Contributions
 
 - Better PubMed query buckets
@@ -18,6 +20,7 @@ Thank you for improving Veterinary Behaviorist Agent. This project is a local-fi
 - Do not add aversive, dominance-based, or punishment-first behavior advice.
 - Keep host-agent mode as the default path. PaperQA2 and Zotero MCP should remain optional integrations.
 - Treat medical claims carefully. Behavior change can be driven by pain or disease.
+- Do not redistribute modified versions of this project without separate permission from the copyright holders.
 
 ## Development Setup
 
@@ -63,6 +66,8 @@ Include:
 
 欢迎贡献。这个项目的目标是让 Claude Code、Codex 等宿主 agent 以本地优先的方式执行循证兽医行为 consult。
 
+本仓库使用 CC BY-NC-ND 4.0。提交 PR 代表你确认自己拥有或被授权提交该贡献，并授权维护者 review、调整、合并和以本项目许可证发布你的贡献。
+
 贡献时请注意：
 
 - 不要提交 API key、Zotero 本地库、笔记、注释、PDF、生成的摘要/全文语料或 PaperQA2 索引。
@@ -70,5 +75,6 @@ Include:
 - 不要加入惩罚优先、支配论或 aversive 行为建议。
 - 默认路径应保持为 host-agent mode；PaperQA2 和 Zotero MCP 是可选增强。
 - 医学相关表述要谨慎，行为变化可能来自疼痛或疾病。
+- 未经版权持有人另行许可，不要分发本项目的修改版本。
 
 提交 PR 时请写明改动内容、原因、测试方式，以及任何安全、引用或数据版权相关考虑。
