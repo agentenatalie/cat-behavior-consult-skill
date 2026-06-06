@@ -32,7 +32,6 @@ cd cat-behavior-vet-skill
 Generate a local corpus if you need to test retrieval:
 
 ```bash
-cd skill/veterinary-behaviorist
 NCBI_EMAIL=you@example.com python3 literature/harvest_pubmed.py
 UNPAYWALL_EMAIL=you@example.com python3 scripts/fetch_oa.py
 ```
@@ -41,15 +40,15 @@ Run basic checks:
 
 ```bash
 python3 -m py_compile \
-  skill/veterinary-behaviorist/scripts/search_corpus.py \
-  skill/veterinary-behaviorist/scripts/fetch_oa.py \
-  skill/veterinary-behaviorist/scripts/zotero_mcp_local.py \
-  skill/veterinary-behaviorist/literature/harvest_pubmed.py
+  scripts/search_corpus.py \
+  scripts/fetch_oa.py \
+  scripts/zotero_mcp_local.py \
+  literature/harvest_pubmed.py
 bash -n \
-  skill/veterinary-behaviorist/scripts/consult.sh \
-  skill/veterinary-behaviorist/scripts/index.sh
-python3 -m json.tool skill/veterinary-behaviorist/settings.json >/dev/null
-python3 skill/veterinary-behaviorist/scripts/search_corpus.py "owner-directed aggression in cats" -n 3
+  scripts/consult.sh \
+  scripts/index.sh
+python3 -m json.tool settings.json >/dev/null
+python3 scripts/search_corpus.py "owner-directed aggression in cats" -n 3
 ```
 
 Before opening a pull request, check that generated or private files are not staged:

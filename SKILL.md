@@ -1,5 +1,5 @@
 ---
-name: veterinary-behaviorist
+name: cat-behavior-vet
 description: >
   Evidence-based veterinary behavior consult skill for cats and companion animals.
   Use when the user asks for help with cat aggression, fear, stress, anxiety,
