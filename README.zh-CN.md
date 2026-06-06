@@ -162,7 +162,24 @@ papers/manifest.csv
 
 `literature/cat-behavior.provenance.json` 只保存公开可引用的书目信息：PMID、标题、年份、期刊和查询来源。真正用于问答的文本由使用者在本机生成。
 
+## Attribution 和法律说明
+
+这一节不是法律意见。
+
+本项目没有捆绑、复制或再分发 Academic Research Suite / Academic Research Skill 的文件、prompt、workflow、template 或 agent 定义。它使用的是通用的本地优先 RAG 和文献检索思路，并针对兽医行为语料做了独立实现。
+
+Paper discovery 使用官方公开 API 和资料库：
+
+- PubMed 记录通过 NCBI E-utilities 发现。NLM 的版权说明指出，NLM 数据包含美国政府作品，也可能包含受美国或其他国家版权法保护的期刊摘要。使用者应遵守 NLM 的 copyright 和 disclaimer 指引：<https://www.nlm.nih.gov/databases/download.html> 和 <https://www.ncbi.nlm.nih.gov/books/NBK25497/>。
+- Unpaywall 只用于发现开放获取来源，API 请求需要联系邮箱：<https://unpaywall.org/products/api>。
+- Europe PMC 只在开放获取全文 XML 可用时使用：<https://europepmc.org/RestfulWebService>。
+
+生成的摘要、全文、PDF、Zotero 文献库、笔记、注释和 PaperQA2 索引都保留在本地，不随本仓库再分发。
+
+本项目与 NCBI、NLM、PubMed、Unpaywall、Europe PMC、Zotero、PaperQA2、DACVB、ECAWBM 均无隶属关系。
+
 ## 环境要求
+
 
 默认原生 Agent 模式：
 

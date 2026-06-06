@@ -161,6 +161,22 @@ The corpus is generated locally from:
 
 `literature/cat-behavior.provenance.json` stores public bibliographic metadata: PMID, title, year, journal, and query source. Actual retrieval text is generated on the user's machine.
 
+## Attribution and Legal Notes
+
+This section is not legal advice.
+
+This project does not bundle, copy, or redistribute Academic Research Suite / Academic Research Skill files, prompts, workflows, templates, or agent definitions. Its retrieval flow uses general local-first RAG and literature-search patterns, implemented specifically for this veterinary behavior corpus.
+
+The project uses official, public APIs and repositories for paper discovery:
+
+- PubMed records are discovered through NCBI E-utilities. NCBI's copyright guidance notes that NLM data include U.S. Government works and may also include abstracts from publications that can be protected by U.S. or non-U.S. copyright law. Users should follow NLM's copyright and disclaimer guidance: <https://www.nlm.nih.gov/databases/download.html> and <https://www.ncbi.nlm.nih.gov/books/NBK25497/>.
+- Unpaywall is used only to discover open-access locations and requires a contact email in API requests: <https://unpaywall.org/products/api>.
+- Europe PMC is used for open-access full-text XML when available: <https://europepmc.org/RestfulWebService>.
+
+Generated abstracts, full text, PDFs, Zotero libraries, notes, annotations, and PaperQA2 indexes stay local. They are not redistributed by this repository.
+
+This repository is not affiliated with NCBI, NLM, PubMed, Unpaywall, Europe PMC, Zotero, PaperQA2, DACVB, or ECAWBM.
+
 ## Requirements
 
 Default Native Agent Mode:

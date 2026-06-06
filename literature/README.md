@@ -18,6 +18,15 @@ Buckets:
 
 After dedup: 63 unique articles.
 
+## Data rights
+This repository does not redistribute `cat-behavior.ris`, PubMed abstracts,
+article full text, PDFs, Zotero notes, or Zotero attachments. Generate them
+locally. NLM notes that abstracts may be protected by copyright; follow NLM's
+copyright and disclaimer guidance:
+
+- <https://www.nlm.nih.gov/databases/download.html>
+- <https://www.ncbi.nlm.nih.gov/books/NBK25497/>
+
 ## Refresh
 ```bash
 python3 harvest_pubmed.py            # rewrites cat-behavior.ris
