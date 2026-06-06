@@ -44,6 +44,72 @@ Optional PaperQA2 mode:
 2. PaperQA2 indexes the local corpus.
 3. `scripts/consult.sh` asks PaperQA2 to retrieve and synthesize a cited answer.
 
+## How Invocation Works
+
+There is no separate chat UI in this repository. The agent is invoked through the AI environment where you install the skill.
+
+For Claude Code or Codex:
+
+1. Clone this repository.
+2. Generate the local corpus.
+3. Symlink `skill/veterinary-behaviorist` into your skills directory.
+4. Set `VET_AGENT_HOME` to the repository path.
+5. In a normal Claude Code or Codex session, explicitly say:
+
+```text
+/veterinary-behaviorist
+use the veterinary behaviorist skill for this case
+consult the veterinary behaviorist agent
+```
+
+After that, the current agent should read the skill instructions, run local retrieval commands, and answer with citations. The user does not call `search_corpus.py` directly unless they want to test retrieval by hand.
+
+## Do You Need Zotero?
+
+No. Zotero is optional.
+
+The default setup works without Zotero:
+
+- `literature/harvest_pubmed.py` finds candidate papers through PubMed.
+- `scripts/fetch_oa.py` creates local text/PDF corpus files when legally available.
+- `scripts/search_corpus.py` searches those local files.
+- The current agent writes the final answer.
+
+Use Zotero only if you want the agent to access your personal reference library, notes, annotations, or PDFs. Zotero is helpful for researchers who already manage papers there, but it is not required for this project to work.
+
+## How Papers Are Found
+
+Users do not need to manually do Web Research for the default corpus.
+
+The paper discovery flow is scripted:
+
+1. `literature/harvest_pubmed.py` runs predefined PubMed E-utilities queries for feline stress, fear, anxiety, aggression, bites, and related behavior topics.
+2. It writes `literature/cat-behavior.ris` locally.
+3. `scripts/fetch_oa.py` reads that RIS file and tries, in order:
+   - existing local `papers/PMID<pmid>.pdf`
+   - Unpaywall open-access PDF
+   - Europe PMC open-access full-text XML
+   - PubMed abstract text fallback
+4. It writes `papers/manifest.csv`, which tells the retrieval script where each local source file is and how to cite it.
+
+Manual research is only needed when:
+
+- you want to expand the corpus beyond the bundled PubMed query buckets;
+- you have lawful access to a paywalled PDF and want to add it locally;
+- a specific paper is missing and you want to locate its PMID/DOI or a legal full-text source.
+
+To add legally obtained PDFs, place them in `papers/` with the PMID filename:
+
+```text
+papers/PMID29099247.pdf
+```
+
+Then refresh:
+
+```bash
+python3 scripts/fetch_oa.py
+```
+
 ## Repository Layout
 
 ```text

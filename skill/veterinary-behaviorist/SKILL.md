@@ -60,6 +60,15 @@ python3 scripts/search_corpus.py "你的具体文献问题" -n 8
 ```
 - `VET_AGENT_HOME` must point to the repository root. If it is unset, infer it
   from the installed skill symlink or ask the user for the repo path.
+- If `papers/manifest.csv` is missing, bootstrap the corpus first:
+  ```bash
+  cd "$VET_AGENT_HOME/literature"
+  NCBI_EMAIL=you@example.com python3 harvest_pubmed.py
+  cd "$VET_AGENT_HOME"
+  UNPAYWALL_EMAIL=you@example.com python3 scripts/fetch_oa.py
+  ```
+  Use the user's configured email if available. If no email is configured, ask
+  for one or tell the user to run the bootstrap commands.
 - Ask focused questions ("What are reliable objective indicators of stress in
   cats?", "What is the evidence on redirected aggression triggers and targets?").
 - **Coverage caveat:** many documents are abstract-level (vet journals are
@@ -78,6 +87,8 @@ full-text PDFs. Use the `zotero_*` MCP tools to:
   `zotero_create_note`) — e.g. save a consult summary back into the library.
 If the MCP tools are unavailable, continue with local search and tell the user
 the Zotero MCP server is not connected if Zotero-specific data was needed.
+Do not require Zotero for ordinary consults; it is an optional enhancement for
+users who already manage a local Zotero library.
 
 ### C. Optional literature QA — PaperQA2 (`consult.sh`)
 Use this only if `PQA_API_KEY` is configured or the user explicitly wants
@@ -96,6 +107,10 @@ answer in its place.
   search first**.
 - "Find / show me the paper on X", "what's in my library", "save this note",
   "read the annotations" → **Zotero MCP**.
+- "I have no corpus / where do the papers come from?" → explain that
+  `harvest_pubmed.py` finds candidate papers through PubMed E-utilities and
+  `fetch_oa.py` pulls OA full text via Unpaywall / Europe PMC or falls back to
+  PubMed abstracts. Web research is not the default path.
 - Complex case → use local search for evidence snippets, Zotero to pull source
   items or notes, and PaperQA2 only when configured.
 

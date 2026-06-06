@@ -44,6 +44,73 @@
 2. PaperQA2 索引本地语料。
 3. `scripts/consult.sh` 调用 PaperQA2 检索并生成带引用的回答。
 
+## 调用方式
+
+这个仓库本身没有单独的聊天界面。它是通过你安装 skill 的 AI 环境来调用的。
+
+以 Claude Code 或 Codex 为例：
+
+1. 克隆这个仓库。
+2. 生成本地文献语料。
+3. 把 `skill/veterinary-behaviorist` 软链到 skills 目录。
+4. 把 `VET_AGENT_HOME` 设置为仓库路径。
+5. 在普通 Claude Code 或 Codex 会话里显式调用：
+
+```text
+/veterinary-behaviorist
+use the veterinary behaviorist skill for this case
+consult the veterinary behaviorist agent
+用兽医行为 skill 看一下这个 case
+```
+
+调用后，当前 agent 会读取 skill 指令、运行本地检索命令，并用检索到的证据回答。用户不需要直接调用 `search_corpus.py`，除非只是想手动测试检索。
+
+## 必须安装 Zotero 吗？
+
+不需要。Zotero 是可选项。
+
+默认流程不依赖 Zotero：
+
+- `literature/harvest_pubmed.py` 通过 PubMed 找候选论文。
+- `scripts/fetch_oa.py` 在本地生成可检索的文本/PDF 语料。
+- `scripts/search_corpus.py` 搜索这些本地文件。
+- 当前 agent 用自己的模型写最终回答。
+
+只有当你希望 agent 访问你的个人 Zotero 文献库、笔记、注释或 PDF 时，才需要安装和配置 Zotero。对已经用 Zotero 管理文献的人来说它很有用，但不是本项目运行的前提。
+
+## Paper 是怎么找到的？
+
+默认语料不需要用户手动 Web Research。
+
+Paper discovery 是脚本化的：
+
+1. `literature/harvest_pubmed.py` 运行预设 PubMed E-utilities 查询，覆盖 feline stress、fear、anxiety、aggression、bite 等猫行为主题。
+2. 脚本在本地写入 `literature/cat-behavior.ris`。
+3. `scripts/fetch_oa.py` 读取 RIS，并按顺序尝试：
+   - 已存在的本地 `papers/PMID<pmid>.pdf`
+   - Unpaywall 开放获取 PDF
+   - Europe PMC 开放获取 full-text XML
+   - PubMed 摘要文本 fallback
+4. 脚本写入 `papers/manifest.csv`，告诉检索脚本每个来源文件在哪里，以及如何引用。
+
+只有这些情况需要人工补充研究：
+
+- 想把语料扩展到预设 PubMed query buckets 以外；
+- 你有合法权限获取某篇付费墙 PDF，并希望加入本地语料；
+- 某篇具体 paper 缺失，需要找到它的 PMID/DOI 或合法全文来源。
+
+如果你有合法获取的 PDF，把它按 PMID 命名放入：
+
+```text
+papers/PMID29099247.pdf
+```
+
+然后刷新：
+
+```bash
+python3 scripts/fetch_oa.py
+```
+
 ## 仓库结构
 
 ```text
