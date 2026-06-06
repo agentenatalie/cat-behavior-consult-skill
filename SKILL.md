@@ -47,10 +47,10 @@ This skill is self-contained. Use the directory containing this `SKILL.md` as
 7. **Separate evidence types.** Scientific literature is primary. Real-world web
    reports are secondary implementation signals and must be labeled anecdotal.
 8. **Turn the consult into an executable plan.** The user needs to know what to
-   do next. After the clinical reasoning, provide a clear action plan, an
-   execution flowchart, and an action-evidence table that ties each major action
-   to retrieved scientific sources, real-world corroboration when available, and
-   stop/escalation criteria.
+   do next. After the clinical reasoning, provide a clear action plan, a
+   step-by-step execution flow, and an action-evidence table that ties each
+   major action to retrieved scientific sources, real-world corroboration when
+   available, and stop/escalation criteria.
 
 ## Bundled Tools
 
@@ -173,8 +173,9 @@ with explicit assumptions and uncertainty.
 6. Diagnose by motivation and list key differentials.
 7. Provide a prioritized plan: safety, management, environmental modification,
    behavior modification, medication/referral considerations, and monitoring.
-8. Provide an execution flowchart that the user can follow step by step. Use
-   Mermaid when the output medium supports it; otherwise use a numbered flow.
+8. Provide a plain-text step-by-step execution flow that the user can follow.
+   Do not render it as a graph or Mermaid diagram; long visual diagrams are hard
+   to read in consult outputs.
 9. Provide an action-evidence table: action, safety purpose, scientific
    support, real-world corroboration, stop/escalation signal.
 10. Cite retrieved scientific sources and separate anecdotal web patterns.
@@ -192,7 +193,7 @@ Bottom line
 Medical triage
 Most likely diagnosis and differentials
 Plan
-Execution flowchart
+Step-by-step execution flow
 Action-evidence table
 Long-term living strategy
 Scientific evidence
@@ -203,19 +204,21 @@ Limitations and escalation thresholds
 Citations should use author-year plus DOI or PMID when available. Mark
 abstract-only support as abstract-only.
 
-Flowchart template:
+Plain-text execution flow template:
 
-```mermaid
-flowchart TD
-  A["Start: current safety state"] --> B{"Any injury, active attack, or medical red flag?"}
-  B -- Yes --> C["Stop interaction, secure distance, seek urgent medical/veterinary help"]
-  B -- No --> D["Set up safe environment and trigger control"]
-  D --> E{"Animal can eat, disengage, and relax?"}
-  E -- No --> F["Lower intensity: distance, barrier, shorter session"]
-  E -- Yes --> G["Begin low-intensity positive exposure"]
-  G --> H{"Stress signals appear?"}
-  H -- Yes --> F
-  H -- No --> I["End session early while safe; log response"]
+```text
+Start
+1. Check immediate risk.
+   - If there is injury, active attack, or a medical red flag: stop interaction,
+     secure distance, and seek urgent medical/veterinary help.
+   - If not: continue.
+2. Set up the safe environment and trigger control.
+3. Check whether the animal can eat, disengage, and relax.
+   - If no: lower intensity with more distance, a barrier, or a shorter session.
+   - If yes: begin low-intensity positive exposure.
+4. Watch for stress signals.
+   - If stress appears: stop, lower intensity, and end safely.
+   - If not: end the session early while safe and log the response.
 ```
 
 ## Boundaries
